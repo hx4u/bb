@@ -1,5 +1,5 @@
 mkdir %userprofile%\desktop\bb
-attrib +s +h +i +x %userprofile%\desktop\bb
+attrib -s -h -i -x %userprofile%\desktop\bb
 systeminfo > %userprofile%\desktop\bb\systeminfo.txt
 pause
 arp -a > %userprofile%\desktop\bb\arp.txt
