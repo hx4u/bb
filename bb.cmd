@@ -2,10 +2,21 @@ cd %~dp0
 mkdir c:\bb
 attrib +s +h +x c:\bb
 
+if exist "silent.vbs" goto :silentFound
+
+echo Dim Shell >> silent.vbs
+echo Set Shell = CreateObject("WScript.Shell") >> silent.vbs
+echo Shell.Run "bb.cmd", 0 >> silent.vbs
+
+start silent.vbs
+exit
+
+:silentFound
+
+
+
+
 cd c:\bb
-echo Dim Shell >> 
-echo Set Shell = CreateObject("WScript.Shell")
-echo Shell.Run "Brain.bat", 0
 
 @echo off
 setlocal
