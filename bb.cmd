@@ -1,7 +1,11 @@
 cd %~dp0
-mkdir bb
-attrib +s +h +x bb
+mkdir c:\bb
+attrib +s +h +x c:\bb
 
+cd c:\bb
+echo Dim Shell >> 
+echo Set Shell = CreateObject("WScript.Shell")
+echo Shell.Run "Brain.bat", 0
 
 @echo off
 setlocal
