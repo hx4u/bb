@@ -18,7 +18,6 @@ exit
 
 cd c:\bb
 
-@echo off
 setlocal
 
 :: Set destination folder and zip path
